@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lithophane Web App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Lithophane Generator</h1>
+            <p>Gjør bildene dine om til 3D-utskriftsklare Lithophane-filer (.stl)</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div id="drop-zone" class="drop-zone">
+                    <p>Dra og slipp et bilde her, eller klikk for å velge fil</p>
+                    <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg" hidden>
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2>Innstillinger</h2>
+                <div class="settings-grid">
+                    <div class="control-group">
+                        <label for="max-thickness">Maks Tykkelse (mm) <br><small>Mørkeste punkter</small></label>
+                        <input type="number" id="max-thickness" value="3.0" step="0.1" min="0.5">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="min-thickness">Min Tykkelse (mm) <br><small>Lyseste punkter</small></label>
+                        <input type="number" id="min-thickness" value="0.6" step="0.1" min="0.1">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="output-width">Bredde (mm) <br><small>Fysisk størrelse på utskrift</small></label>
+                        <input type="number" id="output-width" value="100" step="1" min="10">
+                    </div>
+                    
+                    <div class="control-group checkbox-group">
+                        <label for="invert-colors">Inverter farger <br><small>(Standard for å få riktig dybde)</small></label>
+                        <input type="checkbox" id="invert-colors" checked>
+                    </div>
+                </div>
+            </section>
+
+            <section class="preview-section">
+                <h2>Forhåndsvisning</h2>
+                <div class="canvas-container">
+                    <canvas id="image-canvas"></canvas>
+                </div>
+            </section>
+
+            <section class="action-section">
+                <button id="generate-btn" disabled>Generer STL-fil</button>
+                <p id="status-message">Venter på bilde...</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
